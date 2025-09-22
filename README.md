@@ -21,7 +21,6 @@ A modern, responsive React-based frontend application for PhishGuard AI, designe
 - **HTTP Client**: Axios
 - **UI Components**: Lucide React icons
 - **Animations**: Framer Motion
-- **Backend Integration**: Supabase
 - **Notifications**: React Hot Toast
 
 ## 📋 Prerequisites
@@ -44,8 +43,6 @@ A modern, responsive React-based frontend application for PhishGuard AI, designe
 
 3. Create a `.env` file in the root directory and add your environment variables:
    ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
    VITE_API_BASE_URL=your_backend_api_url
    ```
 

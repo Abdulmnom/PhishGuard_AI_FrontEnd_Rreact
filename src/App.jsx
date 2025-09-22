@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Profile from './pages/Profile.jsx';
+import ModelsPage from './pages/ModelsPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute';
 
 
@@ -52,6 +53,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/models"
+                element={
+                  <ProtectedRoute>
+                    <ModelsPage />
                   </ProtectedRoute>
                 }
               />

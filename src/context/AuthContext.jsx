@@ -67,6 +67,12 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const loginAsGuest = () => {
+    setUser({ username: 'Guest', role: 'admin', isGuest: true });
+    setIsAuthenticated(true);
+    // No token for guest
+  };
+
   const logout = () => {
     setToken(null);
     setUser(null);
@@ -91,6 +97,7 @@ const AuthProvider = ({ children }) => {
     isAuthenticated,
     login,
     register,
+    loginAsGuest,
     logout,
     fetchCurrentUser,
   };

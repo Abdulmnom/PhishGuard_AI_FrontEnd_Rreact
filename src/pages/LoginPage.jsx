@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-hot-toast';
 
 const LoginPage = () => {
-  const { login } = useAuth();
+  const { login, loginAsGuest } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -14,6 +14,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +54,7 @@ const LoginPage = () => {
       toast.success('Login successful');
       navigate('/dashboard');
     } else {
-      setErrors({ general: result.error });
+      setShowGuestPrompt(true);
     }
   };
 
@@ -70,6 +71,24 @@ const LoginPage = () => {
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2 text-red-700">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
             <span>{errors.general}</span>
+          </div>
+        )}
+
+        {showGuestPrompt && (
+          <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-center space-x-2 text-yellow-800 mb-4">
+              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <span>Backend is unavailable. Would you like to continue as a guest?</span>
+            </div>
+            <button
+              onClick={() => {
+                loginAsGuest();
+                navigate('/dashboard');
+              }}
+              className="w-full bg-yellow-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-yellow-700 focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-colors"
+            >
+              Continue as Guest
+            </button>
           </div>
         )}
 
@@ -131,6 +150,18 @@ const LoginPage = () => {
             {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
+
+        <div className="mt-6">
+          <button
+            onClick={() => {
+              loginAsGuest();
+              navigate('/dashboard');
+            }}
+            className="w-full bg-gray-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+          >
+            Register as Guest
+          </button>
+        </div>
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
