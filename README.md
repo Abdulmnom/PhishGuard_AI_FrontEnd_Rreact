@@ -86,16 +86,5 @@ src/
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is proprietary software owned by Abdulmnoum Al-brayky.
-
-## 👤 Owner
-
-**Abdulmnoum Al-brayky**
-
-- GitHub: [@Abdulmnom](https://github.com/Abdulmnom)
-
----
 
 *Built with ❤️ using React and modern web technologies*
